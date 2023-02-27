@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import * as dat from 'dat.gui';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
+import { Sphere } from "three";
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -20,6 +20,16 @@ scene.add(axesHelper);
 // Set position for camera
 camera.position.set(10, 12, 20);
 
+// Chúng ta thực hiện khởi tạo gui và những giá trị ban đầu 
+const gui = new dat.GUI();
+
+const options = {
+    sphereColor: '#446ABD',
+    wireframe: false,
+};
+
+
+
 // Setting Mesh with some Geometry 
 const boxGeometry = new THREE.BoxGeometry();
 const boxMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -37,15 +47,24 @@ const gridHelper = new THREE.GridHelper(30);
 scene.add(gridHelper);
 
 // Setting sphere for scene
-const sphereGeometry = new THREE.SphereGeometry(4, 50, 50);
+const sphereGeometry = new THREE.SphereGeometry(4);
 const sphereMaterial = new THREE.MeshBasicMaterial({
     color: 0x0000FF,
     wireframe: false,    
-    });
+});
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 scene.add(sphere);
 
 sphere.position.set(-10 ,10, 0);
+
+// Chúng ta sử dụng gui dat để thay đổi các thành phần của mesh, 1 công cụ hỗ trợ hữu dụng
+
+gui.addColor(options, 'sphereColor').onChange((e)=> {
+    sphere.material.color.set(e);
+});
+gui.add(options, 'wireframe').onChange((e)=> {
+    sphere.material.wireframe = e;
+})
 
 // Function animate hỗ trợ hoạt ảnh animation của geometry và hỗ trợ camera thay đổi.
 function animate() {
