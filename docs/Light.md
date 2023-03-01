@@ -1,0 +1,13 @@
+----- LIGHT ------
+- Ánh sáng là thành phần vô cùng quan trọng của 3D 
+- Giúp việc thể hiện vật thể sinh động hơn và chân thật hơn
+- Các Mesh khi sử dụng Flexible material thì sẽ không thể hiện màu sắc trừ khi có ánh sáng chiếu vào vật thể => Ánh sáng là nguồn quyết định vật thể sẽ thể hiện ra sao với màu sắc thể nào, đổ bóng ra sao, ...
+
+- Có nhiều nguồn sáng khác nhau tùy vào môi trường 
+- Chúng ta cũng có thể kết hợp những nguồn sáng để đưa ra hình ảnh chân thật nhất.
+--------------------
+- Trong ví dụ này chúng ta sẽ đi qua cơ bản 3 loại ánh sáng thường dùng nhất:
+    - AmbientLight: ánh sáng cơ bản từ môi trường (mặt trời, đèn,...) truyền vào mắt mk và chúng ta có thể nhìn thấy vật thể.
+    - DirectionalLight: ánh sáng từ mặt trời chiếu xuống theo hướng có vị trí, vật thể sẽ thể hiện phần sáng và phần tối ở 2 hướng được chiếu và hướng khuất sáng
+    - SpotLight: đúng như cái tên của nó, spot light là ánh sáng hình vòng cùng chiếu từ trên xuống. Như cái tên của nó ánh sáng thường dùng trên sân khấu và sân vận động với bóng ánh xạ xuống.
+- Trong ví dụ code mẫu chúng ta cũng được giới thiệu tool hỗ trợ giúp dễ dàng bk dc hướng của ánh sáng và bóng tối.
