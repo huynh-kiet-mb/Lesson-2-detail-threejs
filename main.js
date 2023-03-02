@@ -139,16 +139,27 @@ const textureLoader = new THREE.TextureLoader();
 scene.background = textureLoader.load(stars);
 
 // Chúng ta có thể load nhìu mặt của x, y, z là nhiều texture khác nhau theo hình dạng 
-// const cubeLoadTexture = new THREE.CubeTextureLoader();
-// scene.background = cubeLoadTexture.load([
+const cubeTextureLoader = new THREE.CubeTextureLoader();
+// scene.background = cubeTextureLoader.load([
 //     bluePlanet,
 //     bluePlanet,
-//     starLight,
-//     starLight,
+//     stars,
+//     stars,
 //     stars,
 //     stars
 // ]);
+// -------- Hiện cái này cần phải tìm hiểu thêm ------------
 
+// Thiết lập box geometry và thiết lập texture 
+const box2Geometry = new THREE.BoxGeometry(4,4,4);
+const box2Material = new THREE.MeshBasicMaterial({
+    color: 0x00FFFF,
+    map: textureLoader.load(nebula)
+});
+const box2 = new THREE.Mesh(box2Geometry, box2Material);
+scene.add(box2);
+box2.position.set(0,5,10);
+box2.castShadow = true
 
 function animate() {
     box.rotation.x += 0.01;
